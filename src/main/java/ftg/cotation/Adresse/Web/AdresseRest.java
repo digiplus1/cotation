@@ -2,6 +2,7 @@ package ftg.cotation.Adresse.Web;
 
 import ftg.cotation.Adresse.Metier.MetierAdresse;
 import ftg.cotation.Adresse.Model.Pays;
+import ftg.cotation.Adresse.Model.Pointspecifique;
 import ftg.cotation.Adresse.Model.Secteurs;
 import ftg.cotation.Cotation.Model.Cotation;
 import ftg.cotation.Cotation.Model.Position;
@@ -35,7 +36,7 @@ public class AdresseRest {
     }
 
     @PutMapping("update/pointspecifique/cordonne/{idpointspecifique}")
-    Secteurs updatepointSpecifique(@RequestBody Position position,@PathVariable Long idpointspecifique){
+    Pointspecifique updatepointSpecifique(@RequestBody Position position, @PathVariable Long idpointspecifique){
         return metierAdresse.updatepointspecifique(position, idpointspecifique);
     }
 }
