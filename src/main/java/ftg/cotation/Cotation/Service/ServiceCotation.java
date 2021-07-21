@@ -39,6 +39,8 @@ public class ServiceCotation implements MetierCotation {
             prix=1000;
         } if (10<distance && distance<=20){
             prix=1500;
+        } if (25<distance && distance<=30){
+            prix=1500;
         }
         return prix;
     }

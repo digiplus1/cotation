@@ -136,6 +136,14 @@ public class ServiceAdresse implements MetierAdresse {
     }
 
     @Override
+    public Pointspecifique updatepointspecifique(Position position, Long idpointspecifique) {
+        Pointspecifique pointspecifique=daoPontSpecifique.getById(idpointspecifique);
+        pointspecifique.setLatitude(position.getLatitude());
+        pointspecifique.setLongitude(position.getLongitude());
+        return pointspecifique;
+    }
+
+    @Override
     public List<Pays> getAllPays() {
         return daoPays.findAll();
     }
@@ -159,15 +167,15 @@ public class ServiceAdresse implements MetierAdresse {
                 Quartier  quartier=new Quartier();
                 Secteurs secteurs=new Secteurs();
                 Pointspecifique pointSpecifique=new Pointspecifique();
-               Pays p=savePays(new Pays(row.getCell(0).getStringCellValue()));
+               Pays p=savePays(new Pays(row.getCell(0).getStringCellValue().trim()));
 
-                Villes v=saveVille(new Villes(row.getCell(1).getStringCellValue()),p);
+                Villes v=saveVille(new Villes(row.getCell(1).getStringCellValue().trim()),p);
 
-                Quartier q=saveQuartier(new Quartier(row.getCell(2).getStringCellValue()),v);
+                Quartier q=saveQuartier(new Quartier(row.getCell(2).getStringCellValue().trim()),v);
 
-                Secteurs s=saveSecteur(new Secteurs(row.getCell(3).getStringCellValue()),q);
+                Secteurs s=saveSecteur(new Secteurs(row.getCell(3).getStringCellValue().trim()),q);
 
-                savePointSpecifique(new Pointspecifique(row.getCell(4).getStringCellValue()),s);
+                savePointSpecifique(new Pointspecifique(row.getCell(4).getStringCellValue().trim()),s);
             }
             row=feuille.getRow(index++);
         }

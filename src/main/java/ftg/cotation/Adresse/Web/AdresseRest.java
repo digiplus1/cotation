@@ -33,4 +33,9 @@ public class AdresseRest {
     Secteurs updateSecteur(@RequestBody Position position,Long idsecteur){
         return metierAdresse.updateCordonne(position, idsecteur);
     }
+
+    @PutMapping("update/pointspecifique/cordonne/{idpointspecifique}")
+    Secteurs updatepointSpecifique(@RequestBody Position position,Long idpointspecifique){
+        return metierAdresse.updateCordonne(position, idpointspecifique);
+    }
 }

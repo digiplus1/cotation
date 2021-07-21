@@ -27,5 +27,7 @@ public interface MetierAdresse {
     Cotation getCotationByAdresse(AdresseDto adresseDto);
 
     Secteurs updateCordonne(Position position,Long idsecteur);
+
+    Pointspecifique updatepointspecifique(Position position,Long idpointspecifique);
     List<Pays> getAllPays();
 }
