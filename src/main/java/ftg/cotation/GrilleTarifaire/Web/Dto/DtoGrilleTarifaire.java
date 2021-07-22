@@ -5,6 +5,7 @@ public class DtoGrilleTarifaire {
     private double distancemin;
     private double distancemax;
     private String description;
+    private double prix;
 
     public String getLibelle() {
         return libelle;
@@ -36,5 +37,13 @@ public class DtoGrilleTarifaire {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public double getPrix() {
+        return prix;
+    }
+
+    public void setPrix(double prix) {
+        this.prix = prix;
     }
 }
