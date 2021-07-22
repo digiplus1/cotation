@@ -10,8 +10,11 @@ public class GrilleTarirefaire implements Serializable {
     private Long idgrille;
     @Column(unique = true)
     private String libelle;
+    @Column(unique = true)
     private double distancemin;
+    @Column(unique = true)
     private double distancemax;
+    @Column(unique = true)
     private String description;
     private boolean status=true;
     private double prix;
