@@ -10,6 +10,6 @@ import java.util.List;
 public interface DaoGrilleTairifaire extends JpaRepository<GrilleTarirefaire,Long> {
 
     List<GrilleTarirefaire> findByStatusIsTrue();
-    @Query("select u from GrilleTarirefaire u where u.distancemin >= :distance and u.distancemax < :distance")
+    @Query("select u from GrilleTarirefaire u where u.distancemin <= ?1 and u.distancemax > ?1")
     GrilleTarirefaire getGrilleTarirefaireBy(double distance);
 }

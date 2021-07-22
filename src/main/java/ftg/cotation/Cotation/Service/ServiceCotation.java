@@ -31,7 +31,8 @@ public class ServiceCotation implements MetierCotation {
 
         Cotation cotation=new Cotation();
         cotation.setDistance(distance);
-        cotation.setPrix(calculPrix(distance));
+        cotation.setPrix(calculPrix(distance).getPrix());
+        cotation.setLieux(calculPrix(distance).getLibelle());
         return cotation;
     }
 
@@ -39,8 +40,9 @@ public class ServiceCotation implements MetierCotation {
         return Math.pow(Math.sin(val / 2), 2);
     }
 
-    double calculPrix(double distance){
-        GrilleTarirefaire grilleTarirefaire= metierGrilleTarifaire.getDistance(distance);
-        return grilleTarirefaire.getPrix();
+    GrilleTarirefaire calculPrix(double distance){
+        GrilleTarirefaire grilleTarirefaire =metierGrilleTarifaire.getDistance(distance);
+        if (grilleTarirefaire==null)throw new RuntimeException("La distance "+distance+" Km est hors Zone");
+        return grilleTarirefaire;
     }
 }
