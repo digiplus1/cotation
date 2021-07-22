@@ -2,9 +2,10 @@ package ftg.cotation.Adresse.Web;
 
 public class AdresseDto {
     private String pays;
-    private String ville;
+    private String villeDepart;
     private String quartierDepart;
     private String secteurDepart;
+    private String villeArriver;
     private String quartierArriver;
     private String secteurArriver;
 
@@ -16,12 +17,12 @@ public class AdresseDto {
         this.pays = pays;
     }
 
-    public String getVille() {
-        return ville;
+    public String getVilleDepart() {
+        return villeDepart;
     }
 
-    public void setVille(String ville) {
-        this.ville = ville;
+    public void setVilleDepart(String villeDepart) {
+        this.villeDepart = villeDepart;
     }
 
     public String getQuartierDepart() {
@@ -54,5 +55,13 @@ public class AdresseDto {
 
     public void setSecteurArriver(String secteurArriver) {
         this.secteurArriver = secteurArriver;
+    }
+
+    public String getVilleArriver() {
+        return villeArriver;
+    }
+
+    public void setVilleArriver(String villeArriver) {
+        this.villeArriver = villeArriver;
     }
 }
