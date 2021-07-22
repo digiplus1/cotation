@@ -11,4 +11,5 @@ public interface MetierGrilleTarifaire {
     List<GrilleTarirefaire> getAll();
     GrilleTarirefaire updategrille(DtoGrilleTarifaire dtoGrilleTarifaire,Long idgrille);
     GrilleTarirefaire changeStatusgrille(Long idgrille);
+    GrilleTarirefaire getDistance(double distance);
 }

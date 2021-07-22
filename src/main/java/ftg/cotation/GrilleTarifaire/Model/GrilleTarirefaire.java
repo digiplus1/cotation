@@ -14,6 +14,7 @@ public class GrilleTarirefaire implements Serializable {
     private double distancemax;
     private String description;
     private boolean status=true;
+    private double prix;
 
     public Long getIdgrille() {
         return idgrille;
@@ -61,5 +62,13 @@ public class GrilleTarirefaire implements Serializable {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public double getPrix() {
+        return prix;
+    }
+
+    public void setPrix(double prix) {
+        this.prix = prix;
     }
 }

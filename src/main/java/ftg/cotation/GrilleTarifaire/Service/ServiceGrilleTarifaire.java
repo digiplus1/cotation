@@ -43,5 +43,10 @@ public class ServiceGrilleTarifaire implements MetierGrilleTarifaire {
         return grilleTarirefaire;
     }
 
+    @Override
+    public GrilleTarirefaire getDistance(double distance) {
+        return daoGrilleTairifaire.getGrilleTarirefaireBy(distance);
+    }
+
 
 }

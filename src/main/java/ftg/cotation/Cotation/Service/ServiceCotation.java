@@ -3,11 +3,19 @@ package ftg.cotation.Cotation.Service;
 import ftg.cotation.Cotation.Metier.MetierCotation;
 import ftg.cotation.Cotation.Model.Cotation;
 import ftg.cotation.Cotation.Model.Position;
+import ftg.cotation.GrilleTarifaire.Dao.DaoGrilleTairifaire;
+import ftg.cotation.GrilleTarifaire.Metier.MetierGrilleTarifaire;
+import ftg.cotation.GrilleTarifaire.Model.GrilleTarirefaire;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class ServiceCotation implements MetierCotation {
     private static final int EARTH_RADIUS = 6371; // Approx Earth radius in KM
+    @Autowired
+    private MetierGrilleTarifaire metierGrilleTarifaire;
 
     @Override
     public Cotation calaculCotation(Position pointA, Position pointB) {
@@ -32,16 +40,7 @@ public class ServiceCotation implements MetierCotation {
     }
 
     double calculPrix(double distance){
-        double prix=0;
-        if (0<=distance && distance<=5){
-            prix=500;
-        }else  if (5<distance && distance<=10){
-            prix=1000;
-        } if (10<distance && distance<=20){
-            prix=1500;
-        } if (25<distance && distance<=30){
-            prix=1500;
-        }
-        return prix;
+        GrilleTarirefaire grilleTarirefaire= metierGrilleTarifaire.getDistance(distance);
+        return grilleTarirefaire.getPrix();
     }
 }
