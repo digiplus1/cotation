@@ -119,9 +119,9 @@ public class ServiceAdresse implements MetierAdresse {
 
     @Override
     public Cotation getCotationByAdresse(AdresseDto adresseDto) {
-        Secteurs secteursA=daoSecteur.findByLibelleAndLibellevilleAndlibellePays(adresseDto.getSecteurDepart(),adresseDto.getQuartierDepart(), adresseDto.getVilleArriver(), adresseDto.getPays());
+        Secteurs secteursA=daoSecteur.getById( adresseDto.getIdsecteurArriver());
         Position positionA=new Position(secteursA.getLatitude(),secteursA.getLongitude());
-        Secteurs secteursB=daoSecteur.findByLibelleAndLibellevilleAndlibellePays(adresseDto.getSecteurArriver(),adresseDto.getQuartierArriver(), adresseDto.getVilleArriver(), adresseDto.getPays());
+        Secteurs secteursB=daoSecteur.getById(adresseDto.getIdsecteurArriver());
        Position positionB=new Position(secteursB.getLatitude(),secteursB.getLongitude());
         Cotation cotation=metierCotation.calaculCotation(positionA,positionB);
         return cotation;
