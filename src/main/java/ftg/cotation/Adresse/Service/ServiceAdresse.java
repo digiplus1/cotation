@@ -7,11 +7,13 @@ import ftg.cotation.Adresse.Web.AdresseDto;
 import ftg.cotation.Cotation.Metier.MetierCotation;
 import ftg.cotation.Cotation.Model.Cotation;
 import ftg.cotation.Cotation.Model.Position;
+import ftg.cotation.Erreur.ErrorMessages;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -119,10 +121,15 @@ public class ServiceAdresse implements MetierAdresse {
 
     @Override
     public Cotation getCotationByAdresse(AdresseDto adresseDto) {
+
         Secteurs secteursA=daoSecteur.getById( adresseDto.getIdsecteurArriver());
         Position positionA=new Position(secteursA.getLatitude(),secteursA.getLongitude());
         Secteurs secteursB=daoSecteur.getById(adresseDto.getIdsecteurArriver());
        Position positionB=new Position(secteursB.getLatitude(),secteursB.getLongitude());
+
+       if ((secteursA.getLatitude()==0 && secteursA.getLongitude()==0) || (secteursB.getLatitude()==0 || secteursB.getLongitude()==0))
+           throw new ErrorMessages("Les adresses des secteur choisis ne sont pas encore enregistrés merci de le signaler ", HttpStatus.FOUND);
+
         Cotation cotation=metierCotation.calaculCotation(positionA,positionB);
         return cotation;
     }

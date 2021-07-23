@@ -3,10 +3,12 @@ package ftg.cotation.Cotation.Service;
 import ftg.cotation.Cotation.Metier.MetierCotation;
 import ftg.cotation.Cotation.Model.Cotation;
 import ftg.cotation.Cotation.Model.Position;
+import ftg.cotation.Erreur.ErrorMessages;
 import ftg.cotation.GrilleTarifaire.Dao.DaoGrilleTairifaire;
 import ftg.cotation.GrilleTarifaire.Metier.MetierGrilleTarifaire;
 import ftg.cotation.GrilleTarifaire.Model.GrilleTarirefaire;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,7 +44,7 @@ public class ServiceCotation implements MetierCotation {
 
     GrilleTarirefaire calculPrix(double distance){
         GrilleTarirefaire grilleTarirefaire =metierGrilleTarifaire.getDistance(distance);
-        if (grilleTarirefaire==null)throw new RuntimeException("La distance "+distance+" Km est hors Zone");
+        if (grilleTarirefaire==null)throw new ErrorMessages("La distance "+distance+" Km est hors Zone", HttpStatus.CHECKPOINT);
         return grilleTarirefaire;
     }
 }
