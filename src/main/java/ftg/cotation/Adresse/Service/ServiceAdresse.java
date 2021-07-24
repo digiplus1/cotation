@@ -124,7 +124,7 @@ public class ServiceAdresse implements MetierAdresse {
 
         Secteurs secteursA=daoSecteur.getById( adresseDto.getIdsecteurArriver());
         Position positionA=new Position(secteursA.getLatitude(),secteursA.getLongitude());
-        Secteurs secteursB=daoSecteur.getById(adresseDto.getIdsecteurArriver());
+        Secteurs secteursB=daoSecteur.getById(adresseDto.getIdsecteurDepart());
        Position positionB=new Position(secteursB.getLatitude(),secteursB.getLongitude());
 
        if ((secteursA.getLatitude()==0 && secteursA.getLongitude()==0) || (secteursB.getLatitude()==0 || secteursB.getLongitude()==0))

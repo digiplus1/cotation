@@ -6,6 +6,8 @@ public class Cotation {
     private String lieux;
     private double distance;
     private double prix;
+    private Position positionA;
+    private Position positionB;
     private Date date=new Date();
 
     public double getDistance() {
@@ -38,5 +40,21 @@ public class Cotation {
 
     public void setLieux(String lieux) {
         this.lieux = lieux;
+    }
+
+    public Position getPositionA() {
+        return positionA;
+    }
+
+    public void setPositionA(Position positionA) {
+        this.positionA = positionA;
+    }
+
+    public Position getPositionB() {
+        return positionB;
+    }
+
+    public void setPositionB(Position positionB) {
+        this.positionB = positionB;
     }
 }

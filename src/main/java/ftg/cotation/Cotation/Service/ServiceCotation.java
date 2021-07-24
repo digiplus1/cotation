@@ -30,11 +30,13 @@ public class ServiceCotation implements MetierCotation {
         double a = haversin(dLat) + Math.cos(pointA.getLatitude()) * Math.cos(pointB.getLatitude()) * haversin(dLong);
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         double distance=EARTH_RADIUS*c;
-
+        GrilleTarirefaire grilleTarirefaire=calculPrix(distance);
         Cotation cotation=new Cotation();
         cotation.setDistance(distance);
-        cotation.setPrix(calculPrix(distance).getPrix());
-        cotation.setLieux(calculPrix(distance).getLibelle());
+        cotation.setPrix(grilleTarirefaire.getPrix());
+        cotation.setPositionA(pointA);
+        cotation.setPositionB(pointB);
+        cotation.setLieux(grilleTarirefaire.getLibelle());
         return cotation;
     }
 
