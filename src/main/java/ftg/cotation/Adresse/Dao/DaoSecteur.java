@@ -22,4 +22,5 @@ public interface DaoSecteur extends JpaRepository<Secteurs,Long> {
     Secteurs findByLibelle(String s);
     @Query("select u from Secteurs u where u.latitude <> 0 and  u.longitude <> 0")
     List<Secteurs> findBycordonnenon();
+
 }

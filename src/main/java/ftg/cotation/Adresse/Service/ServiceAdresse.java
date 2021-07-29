@@ -136,17 +136,21 @@ public class ServiceAdresse implements MetierAdresse {
 
     @Override
     public Secteurs updateCordonne(Position position, Long idsecteur) {
+        if (position.getLatitude()==0 || position.getLongitude()==0)throw new ErrorMessages("Verifier les cordonnées car elles ne peuvent pas etre nulle",HttpStatus.CONFLICT);
         Secteurs secteurs=daoSecteur.getById(idsecteur);
         secteurs.setLatitude(position.getLatitude());
         secteurs.setLongitude(position.getLongitude());
+        secteurs.setStatutscordonner(true);
         return secteurs;
     }
 
     @Override
     public Pointspecifique updatepointspecifique(Position position, Long idpointspecifique) {
+        if (position.getLatitude()==0 || position.getLongitude()==0)throw new ErrorMessages("Verifier les cordonnées car elles ne peuvent pas etre nulle",HttpStatus.CONFLICT);
         Pointspecifique pointspecifique=daoPontSpecifique.getById(idpointspecifique);
         pointspecifique.setLatitude(position.getLatitude());
         pointspecifique.setLongitude(position.getLongitude());
+        pointspecifique.setStatutscordonner(true);
         return pointspecifique;
     }
 
@@ -157,7 +161,7 @@ public class ServiceAdresse implements MetierAdresse {
 
     @Override
     public List<Secteurs> findByLatitudeIsNotNullAndLongitudeIsNotNull() {
-        return daoSecteur.findBycordonnenon();
+        return daoSecteur.findAll();
     }
 
 

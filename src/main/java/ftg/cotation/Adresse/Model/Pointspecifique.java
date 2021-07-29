@@ -12,6 +12,7 @@ public class Pointspecifique implements Serializable {
     private String libelle;
     private double latitude;
     private double longitude;
+    private boolean statutscordonner=false;
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idsecteur")
@@ -62,5 +63,13 @@ public class Pointspecifique implements Serializable {
 
     public void setSecteurs(Secteurs secteurs) {
         this.secteurs = secteurs;
+    }
+
+    public boolean isStatutscordonner() {
+        return statutscordonner;
+    }
+
+    public void setStatutscordonner(boolean statutscordonner) {
+        this.statutscordonner = statutscordonner;
     }
 }
