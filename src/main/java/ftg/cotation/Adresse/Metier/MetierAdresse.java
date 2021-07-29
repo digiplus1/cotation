@@ -30,4 +30,5 @@ public interface MetierAdresse {
 
     Pointspecifique updatepointspecifique(Position position,Long idpointspecifique);
     List<Pays> getAllPays();
+    List<Secteurs> findByLatitudeIsNotNullAndLongitudeIsNotNull();
 }

@@ -39,4 +39,10 @@ public class AdresseRest {
     Pointspecifique updatepointSpecifique(@RequestBody Position position, @PathVariable Long idpointspecifique){
         return metierAdresse.updatepointspecifique(position, idpointspecifique);
     }
+
+    @GetMapping("all/secteur/cordonne")
+    List<Secteurs> getAllsecteur(){
+        return metierAdresse.findByLatitudeIsNotNullAndLongitudeIsNotNull();
+    }
+
 }

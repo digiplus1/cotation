@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface DaoSecteur extends JpaRepository<Secteurs,Long> {
     @Query("select u from Secteurs u where u.libelle = :secteur and u.quartier.libelle = :quartier")
     Secteurs findByLibelleAndLibelleQuartier(@Param("secteur") String secteur, @Param("quartier") String quartier);
@@ -18,4 +20,6 @@ public interface DaoSecteur extends JpaRepository<Secteurs,Long> {
 
     Secteurs findByLibelleAndQuartier(String secteur,Quartier quartier);
     Secteurs findByLibelle(String s);
+    @Query("select u from Secteurs u where u.latitude <> 0 and  u.longitude <> 0")
+    List<Secteurs> findBycordonnenon();
 }

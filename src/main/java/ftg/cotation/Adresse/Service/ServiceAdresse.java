@@ -155,6 +155,11 @@ public class ServiceAdresse implements MetierAdresse {
         return daoPays.findAll();
     }
 
+    @Override
+    public List<Secteurs> findByLatitudeIsNotNullAndLongitudeIsNotNull() {
+        return daoSecteur.findBycordonnenon();
+    }
+
 
     @Bean
     void lireExcel() throws IOException {
