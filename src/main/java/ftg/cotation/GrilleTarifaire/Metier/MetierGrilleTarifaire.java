@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface MetierGrilleTarifaire {
 
+
     GrilleTarirefaire save(DtoGrilleTarifaire dtoGrilleTarifaire);
     List<GrilleTarirefaire> getAll();
     GrilleTarirefaire updategrille(DtoGrilleTarifaire dtoGrilleTarifaire,Long idgrille);
